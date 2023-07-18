@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 객체를 bean으로 만들어둔다   -->
+    <bean id="test" class="ex01.SpringTest" scope="prototype"/>
+
+    <!--    id = 이름, class = 경로-->
+    <!--  hotel bean에서 사용할 chef 객체-->
+    <bean id="chef" class="ex02.Chef"/>
+
+    <!--    의존성 주입 ( 생성자 ) : hotel이 생성될 때, chef를 생성자로 받는다-->
+    <!--    ref = 참조할 빈의 아이디-->
+    <bean id="hotel" class="ex02.Hotel">
+        <constructor-arg ref="chef"/>
+    </bean>
+
+    <!--   setter를 이용한 dev 생성자 -->
+    <!-- 내용이 길어지면 작성이 어려워진다 => 어노테이션을 사용한다-->
+    <bean id="dev" class="ex03.DatabaseDev">
+        <!--  settr에서 set을 제외한 이름 -->
+        <property name="url" value="jdbc:mysql://localhost~~~"/>
+        <property name="uid" value="Dodo226"/>
+        <property name="upw" value="1234"/>
+    </bean>
+
+    <bean id="memberDAO" class="ex03.MemberDAO">
+        <!-- 객체를 넣으므로 ref 사용 -->
+        <property name="dataSource" ref="dev"/>
+    </bean>
+
+
+</beans>

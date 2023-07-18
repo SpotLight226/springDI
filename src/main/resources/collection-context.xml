@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--    MemberDAO 를 사용하기 DatabaseDev bean-->
+    <bean id="dev" class="ex03.DatabaseDev">
+        <!--  settr에서 set을 제외한 이름 -->
+        <property name="url" value="jdbc:mysql://localhost~~~"/>
+        <property name="uid" value="Dodo226"/>
+        <property name="upw" value="1234"/>
+    </bean>
+
+    <!-- 컬렉션을 주입하는 방법 -->
+    <bean id="customer" class="ex04.Customer">
+        <!--       setter을 통한 주입        -->
+        <property name="lists">
+            <list>
+                <!--        list는 String을 저장하는 list => value       -->
+                <value>문자열</value>
+                <value>홍길동</value>
+                <value>이순신</value>
+            </list>
+        </property>
+
+        <property name="dao">
+            <list>
+                <!--      MemberDAO 객체를 저장하는 list => bean
+                          list에 담기는 객체이므로 id 불필요          -->
+                <bean class="ex03.MemberDAO">
+                    <property name="dataSource" ref="dev"/>
+                </bean>
+            </list>
+        </property>
+
+        <property name="map">
+            <!-- map 에는 entry 가 하나의 쌍으로 들어간다 -->
+            <map>
+                <entry key="xxx123" value="홍길동"/>
+                <entry key="aaa123">
+                    <bean class="ex03.MemberDAO">
+                        <property name="dataSource" ref="dev"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>
