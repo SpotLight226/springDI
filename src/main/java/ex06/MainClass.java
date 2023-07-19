@@ -8,7 +8,9 @@ public class MainClass {
         Airplane airplane = ctx.getBean(Airplane.class);
         Car car = ctx.getBean(Car.class);
 
+        System.out.println("비행기의 배터리는");
         airplane.getBattery().energy();
+        System.out.println("자동차의 배터리는");
         car.getBattery().energy();
 
     }

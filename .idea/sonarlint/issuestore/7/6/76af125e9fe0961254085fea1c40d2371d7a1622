@@ -1,0 +1,10 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(—²¢Ğ
+M
+java:S1854"7Remove this useless assignment to local variable "map".(İËØ«
+S	java:S106"9Replace this use of System.out or System.err by a logger.(”äÙóıÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¥şÕŠ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(±é¢ûÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(è”ıº
+>
+java:S1481"(Remove this unused "map" local variable.(İËØ«
